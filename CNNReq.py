@@ -146,7 +146,7 @@ def generate_conv_layers(config):
     for i, (conv, act, pool) in enumerate(zip(config['convLayers'], config['activationLayers'], config['poolingLayers'])):
         conv_code += f"""
         self.layers.append(nn.Conv2d(in_channels, {conv['filters']}, {conv['kernelSize']}, 
-                                     stride={conv['stride']}, padding='{conv['padding']}'))
+                                     stride={conv['stride']}, padding={conv['padding']}))
         self.layers.append(self.get_activation('{act}'))
         self.layers.append(nn.MaxPool2d({pool['poolSize']}, stride={pool['stride']}))
         in_channels = {conv['filters']}
